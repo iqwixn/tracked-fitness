@@ -95,7 +95,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
+    addOrder: async (parent, { products }, context) => {    //-=-=-=-=add order=-=-=-=-=
       if (context.user) {
         const order = new Order({ products });
 
@@ -105,15 +105,15 @@ const resolvers = {
       }
 
       throw AuthenticationError;
-    },
-    updateUser: async (parent, args, context) => {
+    },  
+    updateUser: async (parent, args, context) => {            //-=-=-=-=add user=-=-=-=-=
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
       }
 
       throw AuthenticationError;
     },
-    updateProduct: async (parent, { _id, quantity }) => {
+    updateProduct: async (parent, { _id, quantity }) => {       //-=-=-=-=update product=-=-=-=-=
       const decrement = Math.abs(quantity) * -1;
 
       return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
