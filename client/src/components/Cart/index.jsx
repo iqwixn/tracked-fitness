@@ -64,7 +64,7 @@ const Cart = () => {
     return (
       <div className="cart-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
-          🛒
+          ❤️
         </span>
       </div>
     );
@@ -75,7 +75,7 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2>Donation</h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
@@ -86,7 +86,7 @@ const Cart = () => {
             <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button onClick={submitCheckout}>Donate</button>
             ) : (
               <span>(log in to check out)</span>
             )}
@@ -97,7 +97,7 @@ const Cart = () => {
           <span role="img" aria-label="shocked">
             😱
           </span>
-          You haven't added anything to your cart yet!
+          You haven't added a donation yet!
         </h3>
       )}
     </div>
