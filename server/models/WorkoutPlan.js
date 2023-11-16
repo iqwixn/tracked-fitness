@@ -8,11 +8,11 @@ const workoutPlanSchema = new Schema({
     required: true,
     trim: true
   },
-  workouts: {
+  workouts: [{
     type: Schema.Types.ObjectId,
     ref: 'Workout',
     required: true
-  },
+  }],
 });
 
 const WorkoutPlan = mongoose.model('WorkoutPlan', workoutPlanSchema);
