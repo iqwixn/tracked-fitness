@@ -10,7 +10,7 @@ const typeDefs = `
     _id: ID
     name: String
     workout: Workout
-    rep: String
+    reps: String
   }
 
   type WorkoutPlan {
