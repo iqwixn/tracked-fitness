@@ -3,15 +3,17 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import CartItem from '../CartItem';
+// import DonationItem from '../DonationItem';
+import DonationItem from '../DonationItem';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { TOGGLE_DONATE, ADD_MULTIPLE_TO_DONATE } from '../../utils/actions';
 import './style.css';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-const Cart = () => {
+// const Donataion
+const Donate = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -24,18 +26,18 @@ const Cart = () => {
   }, [data]);
 
   useEffect(() => {
-    async function getCart() {
-      const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    async function getDonate() {
+      const cart = await idbPromise('donate', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_DONATE, products: [...donate] });
     }
 
     if (!state.cart.length) {
-      getCart();
+      getDonate();
     }
-  }, [state.cart.length, dispatch]);
+  }, [state.donate.length, dispatch]);
 
   function toggleCart() {
-    dispatch({ type: TOGGLE_CART });
+    dispatch({ type: TOGGLE_DONATE });
   }
 
   function calculateTotal() {
@@ -62,7 +64,7 @@ const Cart = () => {
 
   if (!state.cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
+      <div className="donate-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
           ❤️
         </span>
@@ -79,7 +81,8 @@ const Cart = () => {
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
+            // DonationItem
+            <DonationItem key={item._id} item={item} />
           ))}
 
           <div className="flex-row space-between">
@@ -88,7 +91,7 @@ const Cart = () => {
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Donate</button>
             ) : (
-              <span>(log in to check out)</span>
+              <span>(log in to donate)</span>
             )}
           </div>
         </div>
@@ -104,4 +107,5 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+// export default Donation;
+export default Donate;
