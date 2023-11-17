@@ -14,7 +14,7 @@ const workoutPlanSchema = new Schema({
     required: true
   },
   reps: {
-    type: Number,
+    type: String,
     required: true,
     trim: true
   }
