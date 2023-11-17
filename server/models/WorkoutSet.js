@@ -8,13 +8,18 @@ const workoutPlanSchema = new Schema({
     required: true,
     trim: true
   },
-  workouts: [{
+  workout: {
     type: Schema.Types.ObjectId,
-    ref: 'WorkoutSet',
+    ref: 'Workout',
     required: true
-  }],
+  },
+  reps: {
+    type: Number,
+    required: true,
+    trim: true
+  }
 });
 
-const WorkoutPlan = mongoose.model('WorkoutPlan', workoutPlanSchema);
+const WorkoutPlan = mongoose.model('WorkoutSet', workoutPlanSchema);
 
 module.exports = WorkoutPlan;
