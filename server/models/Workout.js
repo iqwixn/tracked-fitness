@@ -8,9 +8,9 @@ const workoutSchema = new Schema({
     required: true,
     trim: true
   },
-  reps: {
-    type: Number,
-    required: true
+  description: {
+    type: String,
+    required: false
   },
 });
 
