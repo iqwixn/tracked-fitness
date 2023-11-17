@@ -20,6 +20,12 @@ const typeDefs = `
     products: [Product]
   }
 
+  type WorkoutPlan {
+    _id: ID
+    name: String
+    workouts: [Workout]
+  }
+
   type User {
     _id: ID
     firstName: String
