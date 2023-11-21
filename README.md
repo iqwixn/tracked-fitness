@@ -1,3 +1,1 @@
 # tracked-fitness
-
-test
