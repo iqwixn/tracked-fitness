@@ -50,7 +50,7 @@ const Home = () => {
         </div>
         <div className="lastWorkout">
               <h1>Your Last Workout</h1>
-              <p>You don't even have a gym membership?</p>
+              <p>You do not even have a gym membership?</p>
         </div>
         <div className="nextWorkout">
           <h1>Your Next Workout</h1>
