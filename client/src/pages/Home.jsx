@@ -54,7 +54,7 @@ const Home = () => {
         </div>
         <div className="nextWorkout">
           <h1>Your Next Workout</h1>
-          <button>Next Workout</button>
+          <button>Create Workout</button>
 
         </div>
         <div className="workoutHistory">

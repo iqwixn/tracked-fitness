@@ -151,7 +151,7 @@ input:focus {
 
 .mx-1 {
   margin-right: var(--spacing-one);
-  margin-left: var(--spacing-one);
+  margin-left: auto;
 }
 
 .mx-2 {
