@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_WORKOUTS } from '../utils/queries';
 import axios from 'axios';
+import { Button } from 'antd';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
@@ -59,16 +60,16 @@ const Home = () => {
         </div>
         <div className="lastWorkout">
               <h1>Your Last Workout</h1>
-              <button>Last Workout</button>
+              <Button type="primary">Last Workout</Button>
         </div>
         <div className="nextWorkout">
           <h1>Your Next Workout</h1>
-          <button>Create Workout</button>
+          <Button type="primary">Create Workout</Button>
 
         </div>
         <div className="workoutHistory">
         <h1>Your Workout History</h1>
-          <button>Workout History</button>
+        <Button type="primary">Last Workout</Button>
 
         </div>
         <div className="availableWorkouts">
