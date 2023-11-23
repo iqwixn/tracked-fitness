@@ -76,6 +76,7 @@ export const QUERY_WORKOUT_PLANS = gql`
     workoutPlans {
       _id
       name
+      createdAt
       workouts {
         _id
         name
@@ -95,6 +96,7 @@ export const QUERY_WORKOUT_PLAN = gql`
     workoutPlan(_id: $_id) {
       _id
       name
+      createdAt
       workouts {
         _id
         name

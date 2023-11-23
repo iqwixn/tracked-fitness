@@ -107,6 +107,7 @@ export const ADD_WORKOUT_PLAN = gql`
     addWorkoutPlan(name: $name, workouts: $workouts) {
       _id
       name
+      createdAt
       workouts {
         _id
         name
@@ -126,6 +127,7 @@ export const UPDATE_WORKOUT_PLAN = gql`
     updateWorkoutPlan(_id: $_id, name: $name, workouts: $workouts) {
       _id
       name
+      createdAt
       workouts {
         _id
         name
@@ -145,6 +147,7 @@ export const DELETE_WORKOUT_PLAN = gql`
     deleteWorkoutPlan(_id: $_id) {
       _id
       name
+      createdAt
       workouts {
         _id
         name
