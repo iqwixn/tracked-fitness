@@ -1,17 +1,26 @@
 import Auth from "../utils/auth";
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_WORKOUTS } from '../utils/queries';
+import { QUERY_WORKOUTS, QUERY_USER } from '../utils/queries';
 import axios from 'axios';
 import { Button } from 'antd';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
+  const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
+
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
+  const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
+
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkouts(data?.workouts || []);
   }, [data]);
+
+  useEffect(() => {
+    // Fetch workout plans for the current user when the component is loaded
+    setUserWorkoutPlans(userData?.user?.workoutPlans || []);
+  }, [userData]);
 
   const [dailyQuote, setDailyQuote] = useState(null);
 
@@ -68,9 +77,12 @@ const Home = () => {
 
         </div>
         <div className="workoutHistory">
-        <h1>Your Workout History</h1>
-        <Button type="primary">Last Workout</Button>
-
+          <h1>Your Workout History</h1>
+          <ul>
+            {userWorkoutPlans.map((workoutPlan) => (
+              <li key={workoutPlan._id}>{workoutPlan.name}</li>
+            ))}
+          </ul>
         </div>
         <div className="availableWorkouts">
           <h1>Available Workouts</h1>
