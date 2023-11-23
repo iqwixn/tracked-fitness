@@ -1,8 +1,17 @@
 import Auth from "../utils/auth";
 import { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_WORKOUTS } from '../utils/queries';
 import axios from 'axios';
 
 const Home = () => {
+  const { loading, data } = useQuery(QUERY_WORKOUTS);
+  const [availableWorkouts, setAvailableWorkouts] = useState([]);
+  useEffect(() => {
+    // Fetch workouts when the component is loaded
+    setAvailableWorkouts(data?.workouts || []);
+  }, [data]);
+
   const [dailyQuote, setDailyQuote] = useState(null);
 
   const fetchDailyQuote = async () => {
@@ -62,7 +71,15 @@ const Home = () => {
           <button>Workout History</button>
 
         </div>
-      
+        <div className="availableWorkouts">
+          <h1>Available Workouts</h1>
+          <ul>
+            {availableWorkouts.map((workout) => (
+              <li key={workout._id}>{workout.name}</li>
+            ))}
+          </ul>
+        </div>
+
 
       </div>
     );
