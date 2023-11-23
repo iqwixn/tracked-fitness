@@ -6,10 +6,6 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row justify-start">
-          
-          <li className="mx-1">
-            <Link to="/workoutHistory">Workout History</Link>
-          </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
@@ -33,10 +29,10 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-2 justify-content: space-between align-items: center;">
+    <header className="flex-row px-2 justify-content: space-between align-items: center">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">
+          <span role="img" aria-label="lifting">
             🏋️
           </span>
           Tracked Fitness
