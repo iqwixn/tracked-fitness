@@ -17,6 +17,7 @@ const typeDefs = `
     _id: ID
     name: String
     workouts: [WorkoutSet]
+    createdAt: String 
   }
 
   type User {
