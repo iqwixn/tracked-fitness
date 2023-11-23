@@ -77,11 +77,19 @@ const Home = () => {
         </div>
         <div className="workoutHistory">
           <h1>Your Workout History</h1>
-          <ul>
-            {userWorkoutPlans.map((workoutPlan) => (
-              <li key={workoutPlan._id}>{workoutPlan.name}</li>
-            ))}
-          </ul>
+          {userWorkoutPlans.map((workoutPlan) => (
+            <div key={workoutPlan._id}>
+              <h2>{workoutPlan.name}</h2>
+              <ul>
+                {workoutPlan.workouts.map((workoutSet) => (
+                  <li key={workoutSet._id}>
+                    <p>{workoutSet.name}</p>
+                    <p>{`Reps: ${workoutSet.reps}`}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="availableWorkouts">
           <h1>Available Workouts</h1>
