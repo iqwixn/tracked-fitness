@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_WORKOUTS, QUERY_USER } from '../utils/queries';
 import axios from 'axios';
+import { Button } from 'antd';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
@@ -82,6 +83,7 @@ const Home = () => {
               <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
         <div className="lastWorkout">
+
           <h1>Your Last Workout</h1>
           {mostRecentWorkoutPlan && (
             <>
@@ -99,7 +101,7 @@ const Home = () => {
         </div>
         <div className="nextWorkout">
           <h1>Your Next Workout</h1>
-          <button>Next Workout</button>
+          <Button type="primary">Create Workout</Button>
 
         </div>
         <div className="workoutHistory">
