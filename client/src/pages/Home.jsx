@@ -44,22 +44,22 @@ const Home = () => {
 
         <div className="welcomeMessage">
               <h1>Welcome!</h1>
-              <p>Your last work out was:    an embarassment, you can do better.</p>
+
               <p id="Quote">{dailyQuote?.text}</p>
               <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
         <div className="lastWorkout">
               <h1>Your Last Workout</h1>
-              <p>You do not even have a gym membership?</p>
+              <button>Last Workout</button>
         </div>
         <div className="nextWorkout">
           <h1>Your Next Workout</h1>
-          <p>Get a gym membership</p>
+          <button>Next Workout</button>
 
         </div>
-        <div className="goals">
-          <h1>Your Goals</h1>
-          <p>Get huge</p>
+        <div className="workoutHistory">
+        <h1>Your Workout History</h1>
+          <button>Workout History</button>
 
         </div>
       
