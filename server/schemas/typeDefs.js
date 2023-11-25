@@ -17,6 +17,7 @@ const typeDefs = `
     _id: ID
     name: String
     workouts: [WorkoutSet]
+    createdAt: String 
   }
 
   type User {
@@ -59,7 +60,7 @@ const typeDefs = `
     updateWorkoutSet(_id: ID!, name: String, workout: ID, reps: String): WorkoutSet
     deleteWorkoutSet(_id: ID!): WorkoutSet
 
-    addWorkoutPlan(name: String!, workouts: [ID]!): WorkoutPlan
+    addWorkoutPlan(name: String!, workouts: [ID]!, createdAt: String): WorkoutPlan
     updateWorkoutPlan(_id: ID!, name: String, workouts: [ID]): WorkoutPlan
     deleteWorkoutPlan(_id: ID!): WorkoutPlan
 

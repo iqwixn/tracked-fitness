@@ -13,6 +13,10 @@ const workoutPlanSchema = new Schema({
     ref: 'WorkoutSet',
     required: true
   }],
+  createdAt: {
+    type: String,
+    required: true
+  }
 });
 
 const WorkoutPlan = mongoose.model('WorkoutPlan', workoutPlanSchema);
