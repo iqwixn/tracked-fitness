@@ -12,10 +12,7 @@ const Home = () => {
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
   const [mostRecentWorkoutPlan, setMostRecentWorkoutPlan] = useState(null);
-  const [controlledDate, setControlledDate] = useState(null);
-  const onChange = (date) => {
-    setControlledDate(date);
-  };
+
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
