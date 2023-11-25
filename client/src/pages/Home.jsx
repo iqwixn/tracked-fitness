@@ -5,6 +5,7 @@ import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
 
+
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
