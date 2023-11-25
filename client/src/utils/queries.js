@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
       workoutPlans {
         _id
         name
+        createdAt
         workouts {
           _id
           name

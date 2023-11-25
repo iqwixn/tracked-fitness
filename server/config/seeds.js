@@ -71,7 +71,8 @@ db.once('open', async () => {
   const workoutPlans = await WorkoutPlan.insertMany([
     {
       name: 'Push Day 11/16/23',
-      workouts: [workoutSets[0]._id, workoutSets[1]._id, workoutSets[2]._id, workoutSets[3]._id, workoutSets[4]._id, workoutSets[5]._id]
+      workouts: [workoutSets[0]._id, workoutSets[1]._id, workoutSets[2]._id, workoutSets[3]._id, workoutSets[4]._id, workoutSets[5]._id],
+      createdAt: '11/16/23'
     }
   ])
 
