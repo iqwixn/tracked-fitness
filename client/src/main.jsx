@@ -6,7 +6,8 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Add_Workout from './pages/NewWorkout.jsx';
+import Add_Exercise from './pages/NewExercise.jsx';
+import Add_Workout from './pages/NewWorkoutSet.jsx';
 
 
 
@@ -26,9 +27,12 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       },{
+        path: '/newexercise',
+        element: <Add_Exercise />
+      }, {
         path: '/newworkout',
-        element: <Add_Workout />
-      }, 
+        element: <Add_Workout/>
+      }
     ]
   }
 ]);

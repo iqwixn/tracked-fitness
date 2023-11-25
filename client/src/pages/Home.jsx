@@ -146,7 +146,8 @@ const Home = () => {
               <div className="nextWorkout">
                 <h1>Your Next Workout</h1>
                 <Button type="primary">Create Workout</Button>
-                <Link to="./newworkout">New Workout!</Link>
+                <Link to="/newexercise">New Exercise!</Link>
+                <Link to="/newworkout">New Workout!</Link>
               </div>
             </Card>
           </Col>

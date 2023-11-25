@@ -2,18 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { ADD_WORKOUT } from '../utils/mutations';
+import { ADD_WORKOUT_SET } from '../utils/mutations';
 
 function Add_Workout(props) {
-  const [formState, setFormState] = useState({ name: '', description: '' });
-  const [addWorkout] = useMutation(ADD_WORKOUT);
+  const [formState, setFormState] = useState({ name: '', workout: '', reps:'' });
+  const [addWorkout] = useMutation(ADD_WORKOUT_SET);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addWorkout({
       variables: {
         name: formState.name,
-        description: formState.description,
+        workout: formState.workout,
+        reps: formState.reps,
       },
     });
     const token = mutationResponse.data.addWorkout.token;
@@ -37,20 +38,30 @@ function Add_Workout(props) {
         <div className="flex-row space-between my-2">
           <label htmlFor="name">Workout Name:</label>
           <input
-            placeholder="First"
+            placeholder="Workout"
             name="name"
             type="name"
             id="name"
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Workout Description:</label>
+        {/* <div className="flex-row space-between my-2">
+          <label htmlFor="lastName">Workout:</label>
           <input
-            placeholder="description"
-            name="description"
-            type="description"
-            id="description"
+            placeholder="Workout"
+            name="Workout"
+            type="Workout"
+            id="Workout"
+            onChange={handleChange}
+          />
+        </div> */}
+        <div className="flex-row space-between my-2">
+          <label htmlFor="reps">Number of Reps:</label>
+          <input
+            placeholder="Reps"
+            name="Reps"
+            type="Reps"
+            id="Reps"
             onChange={handleChange}
           />
         </div>
