@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { DatePicker } from 'antd';
+
 
 import Nav from './components/Nav';
 import { StoreProvider } from './utils/GlobalState';
@@ -33,11 +33,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider>
+      
         <Nav />
-        <DatePicker />
+        
         <Outlet />
-      </StoreProvider>
+      
     </ApolloProvider>
   );
 }

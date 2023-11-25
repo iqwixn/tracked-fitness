@@ -12,6 +12,11 @@ const Home = () => {
 
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
+  const [mostRecentWorkoutPlan, setMostRecentWorkoutPlan] = useState(null);
+  const [controlledDate, setControlledDate] = useState(null);
+  const onChange = (date) => {
+    setControlledDate(date);
+  };
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
@@ -78,10 +83,10 @@ const Home = () => {
     return (
       <div className="homeParent">
         <div className="welcomeMessage">
-              <h1>Welcome!</h1>
+          <h1>Welcome!</h1>
 
-              <p id="Quote">{dailyQuote?.text}</p>
-              <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
+          <p id="Quote">{dailyQuote?.text}</p>
+          <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
         <div className="lastWorkout">
 
