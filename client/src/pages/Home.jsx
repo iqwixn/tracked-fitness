@@ -5,16 +5,13 @@ import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
 
+
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
 
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
-  const [controlledDate, setControlledDate] = useState(null);
-  const onChange = (date) => {
-    setControlledDate(date);
-  };
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
@@ -24,7 +21,22 @@ const Home = () => {
   useEffect(() => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
+
+    console.log(userData?.user?.workoutPlans);
   }, [userData]);
+
+  useEffect(() => {
+    // Find the most recent workout plan
+    if (userWorkoutPlans.length > 0) {
+      const sortedWorkoutPlans = [...userWorkoutPlans].sort((a, b) => {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA;
+      });
+
+      setMostRecentWorkoutPlan(sortedWorkoutPlans[0]);
+    }
+  }, [userWorkoutPlans]);
 
   const [dailyQuote, setDailyQuote] = useState(null);
 
@@ -66,11 +78,36 @@ const Home = () => {
     return (
       <div className="homeParent">
         <div className="welcomeMessage">
-          <h1>Welcome!</h1>
+              <h1>Welcome!</h1>
+
+              <p id="Quote">{dailyQuote?.text}</p>
+              <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
+        </div>
+        <div className="lastWorkout">
+
+          <h1>Your Last Workout</h1>
+          {mostRecentWorkoutPlan && (
+            <>
+              <p>{mostRecentWorkoutPlan.name}</p>
+              <ul>
+                {mostRecentWorkoutPlan.workouts.map((workoutSet) => (
+                  <li key={workoutSet._id}>
+                    <p>{workoutSet.name}</p>
+                    <p>{`Reps: ${workoutSet.reps}`}</p>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+        <div className="nextWorkout">
+          <h1>Your Next Workout</h1>
+          <Button type="primary">Create Workout</Button>
 
           <p id="Quote">{dailyQuote?.text}</p>
           <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
+
 
         <Row>
           <Col span={12}>
