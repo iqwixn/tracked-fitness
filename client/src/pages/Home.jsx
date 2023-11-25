@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -145,6 +146,7 @@ const Home = () => {
               <div className="nextWorkout">
                 <h1>Your Next Workout</h1>
                 <Button type="primary">Create Workout</Button>
+                <Link to="./newworkout">New Workout!</Link>
               </div>
             </Card>
           </Col>
