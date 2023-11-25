@@ -20,6 +20,7 @@
     "vite-plugin-style-import": "^2.0.0"
   },
   "dependencies": {
-    "antd": "^5.11.2"
+    "antd": "^5.11.2",
+    "react-responsive": "^9.0.2"
   }
 }
