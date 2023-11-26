@@ -54,11 +54,6 @@ function Add_Workout(props) {
             onChange={handleChange}
           />
         </div>
-        <ul>
-              {availableWorkouts.map((workout) => (
-                <li key={workout._id}>{workout.name}</li>
-              ))}
-            </ul>
         <div className="flex-row space-between my-2">
           <label htmlFor="reps">Number of Reps:</label>
           <input
@@ -69,6 +64,17 @@ function Add_Workout(props) {
             onChange={handleChange}
           />
         </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="reps">Exercise:</label>
+          <input
+          placeholder='temp'
+          />
+          <ul>
+              {availableWorkouts.map((workout) => (
+                <li key={workout._id}>{workout.name}</li>
+              ))}
+          </ul>
+        </div> 
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
         </div>
