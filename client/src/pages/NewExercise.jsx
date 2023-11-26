@@ -32,7 +32,7 @@ function Add_Exercise(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/Home">← Go to Home</Link>
+      <Link to="/">← Go to Home</Link>
 
       <h2>Add Exercise</h2>
       <form onSubmit={handleFormSubmit}>

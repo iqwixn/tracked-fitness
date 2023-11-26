@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_WORKOUT_SET } from '../utils/mutations';
+import { useQuery } from "@apollo/client";
+import { QUERY_WORKOUTS } from "../utils/queries";
 
 function Add_Workout(props) {
-  const [formState, setFormState] = useState({ name: '', workout: '', reps:'' });
+  const [formState, setFormState] = useState({ name: '', reps:'' });
   const [addWorkout] = useMutation(ADD_WORKOUT_SET);
+  const [availableWorkouts, setAvailableWorkouts] = useState([]);
+  const { loading, data } = useQuery(QUERY_WORKOUTS);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +25,11 @@ function Add_Workout(props) {
     Auth.login(token);
   };
 
+  useEffect(() => {
+    // Fetch workouts when the component is loaded
+    setAvailableWorkouts(data?.workouts || []);
+  }, [data]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -31,7 +40,7 @@ function Add_Workout(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/Home">← Go to Home</Link>
+      <Link to="/">← Go to Home</Link>
 
       <h2>Add Workout</h2>
       <form onSubmit={handleFormSubmit}>
@@ -45,16 +54,11 @@ function Add_Workout(props) {
             onChange={handleChange}
           />
         </div>
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Workout:</label>
-          <input
-            placeholder="Workout"
-            name="Workout"
-            type="Workout"
-            id="Workout"
-            onChange={handleChange}
-          />
-        </div> */}
+        <ul>
+              {availableWorkouts.map((workout) => (
+                <li key={workout._id}>{workout.name}</li>
+              ))}
+            </ul>
         <div className="flex-row space-between my-2">
           <label htmlFor="reps">Number of Reps:</label>
           <input
