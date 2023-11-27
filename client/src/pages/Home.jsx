@@ -106,15 +106,6 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className="nextWorkout">
-          <h1>Your Next Workout</h1>
-          <Button type="primary">Create Workout</Button>
-
-          <p id="Quote">{dailyQuote?.text}</p>
-          <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
-        </div>
-
-
         <Row>
           <Col span={12}>
             <Space direction="horizontal" align="center">
