@@ -73,7 +73,7 @@ function Add_Workout(props) {
           <ul>
               {availableWorkouts.map(exercises => 
                 <dl key={exercises._id} value={exercises._id}>
-                  <input type='checkbox' onChange={handleChange}/>           
+                  <input type='radio' name='exercise' onChange={handleChange}/>           
                   {exercises.name}
                   <dd>{exercises.description}</dd>
                 </dl>
