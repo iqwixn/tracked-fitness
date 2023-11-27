@@ -6,11 +6,13 @@ import { ADD_WORKOUT_SET } from '../utils/mutations';
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS } from "../utils/queries";
 
+
 function Add_Workout(props) {
-  const [formState, setFormState] = useState({ name: '', reps:'' });
+  const [formState, setFormState] = useState({ name: '', reps:'', workout:'' });
   const [addWorkout] = useMutation(ADD_WORKOUT_SET);
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const { loading, data } = useQuery(QUERY_WORKOUTS);
+
 
 
   const handleFormSubmit = async (event) => {
@@ -18,8 +20,8 @@ function Add_Workout(props) {
     const mutationResponse = await addWorkout({
       variables: {
         name: formState.name,
-        workout: formState.workout,
         reps: formState.reps,
+        workout: formState.workout,
       },
     });
     const token = mutationResponse.data.addWorkout.token;
@@ -39,7 +41,6 @@ function Add_Workout(props) {
     });
   };
 
-  //console.log(data.workouts.length)
 
   return (
     <div className="container my-1">
@@ -68,11 +69,15 @@ function Add_Workout(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-        <label htmlFor="reps">Exercise:</label>
+        <label htmlFor="workout">Exercise:</label>
           <ul>
-              {availableWorkouts.map((workout) => (
-                <li><button key={workout._id}>{workout.name}</button></li>
-              ))}
+              {availableWorkouts.map(exercises => 
+                <dl key={exercises._id} value={toString(exercises._id)}>
+                  <input type='checkbox'/>           
+                  {exercises.name}
+                  <dd>{exercises.description}</dd>
+                </dl>
+              )}
           </ul>
         </div> 
         <div className="flex-row flex-end">
