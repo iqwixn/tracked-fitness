@@ -69,11 +69,11 @@ function Add_Workout(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-        <label htmlFor="workout">Exercise:</label>
+        <label htmlFor="workout">Exercises:</label>
           <ul>
               {availableWorkouts.map(exercises => 
-                <dl key={exercises._id} value={toString(exercises._id)}>
-                  <input type='checkbox'/>           
+                <dl key={exercises._id} value={exercises._id}>
+                  <input type='checkbox' onChange={handleChange}/>           
                   {exercises.name}
                   <dd>{exercises.description}</dd>
                 </dl>
