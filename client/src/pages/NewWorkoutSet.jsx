@@ -12,6 +12,7 @@ function Add_Workout(props) {
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const { loading, data } = useQuery(QUERY_WORKOUTS);
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addWorkout({
@@ -37,6 +38,8 @@ function Add_Workout(props) {
       [name]: value,
     });
   };
+
+  //console.log(data.workouts.length)
 
   return (
     <div className="container my-1">
@@ -66,12 +69,9 @@ function Add_Workout(props) {
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="reps">Exercise:</label>
-          <input
-          placeholder='temp'
-          />
           <ul>
               {availableWorkouts.map((workout) => (
-                <li key={workout._id}>{workout.name}</li>
+                <li><button key={workout._id}>{workout.name}</button></li>
               ))}
           </ul>
         </div> 
