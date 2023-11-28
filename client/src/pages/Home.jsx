@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
-import { Button, Card, Space, DatePicker, Col, Row } from "antd";
+import { Button, Card, Space, DatePicker, Col, Row, Input, Layout } from "antd";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
@@ -87,15 +87,18 @@ const Home = () => {
           <p id="Quote">{dailyQuote?.text}</p>
           <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
-        <Row>
-          <Col span={12}>
-            <Space direction="horizontal" align="center">
+        <Space direction="vertical" 
+               size="middle" 
+               style={{ display: 'flex' }}>
               <Card
                 title="Your Last Workout"
                 style={{
                   background: "linear-gradient(#ceeded, #24bdff)",
                   border: "solid lightblue",
-                  margin: "0 0 0 10px",
+                  margin: "0 0 0 00px",
+                  textAlign: "center",
+                  width: "118%"
+                  
                 }}
               >
         <div className="lastWorkout">
@@ -113,37 +116,35 @@ const Home = () => {
             </>
           )}
         </div>
-        
-       
-
               </Card>
-            </Space>
-          </Col>
-          <Col span={12}>
             <Card
               title="Your Next Workout"
               bordered
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 20px",
+                margin: "0 0 0 0px",
+                textAlign: "center",
+                width: "118%"
               }}
             >
               <div className="nextWorkout">
                 
-                <Button type="primary">Create Workout</Button>
+              <Input defaultValue="Combine input and button" />
+              <Button type="primary">Submit</Button>
               </div>
             </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
+         
+        
+       
             <Card
               title="Your Workout History"
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 10px",
+                margin: "auto",
+                textAlign: "center",
+                width: "118%"
               }}
             >
               <div className="workoutHistory">
@@ -162,26 +163,29 @@ const Home = () => {
                 ))}
               </div>
             </Card>
-          </Col>
-          <Col span={12}>
+          
+         
             <Card
               title="Available Workouts"
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 10px",
+                margin: "0 0 0px 0px",
+                textAlign: "center",
+                width: "118%"
               }}
             >
               <div className="availableWorkouts">
-                <ul>
+                <ul className="none">
                   {availableWorkouts.map((workout) => (
-                    <li key={workout._id}>{workout.name}</li>
+                    <li  key={workout._id}>{workout.name}</li>
                   ))}
                 </ul>
               </div>
             </Card>
-          </Col>
-        </Row>
+    
+        
+      </Space>
       </div>
     );
   }
