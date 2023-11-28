@@ -8,26 +8,27 @@ import { QUERY_WORKOUTS } from "../utils/queries";
 
 
 function Add_Workout(props) {
-  const [formState, setFormState] = useState({ name: '', reps:'', workout:'' });
-  const [addWorkout] = useMutation(ADD_WORKOUT_SET);
-  const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const { loading, data } = useQuery(QUERY_WORKOUTS);
+  const [availableWorkouts, setAvailableWorkouts] = useState([]);
 
-
+  const [formState, setFormState] = useState({ name: '', workout:'', reps:'' });
+  const [addWorkout] = useMutation(ADD_WORKOUT_SET);
+  
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addWorkout({
       variables: {
         name: formState.name,
-        reps: formState.reps,
         workout: formState.workout,
+        reps: formState.reps,        
       },
     });
     const token = mutationResponse.data.addWorkout.token;
     Auth.login(token);
-  };
 
+  };
+  
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkouts(data?.workouts || []);
@@ -72,8 +73,8 @@ function Add_Workout(props) {
         <label htmlFor="workout">Exercises:</label>
           <ul>
               {availableWorkouts.map(exercises => 
-                <dl key={exercises._id} value={exercises._id}>
-                  <input type='radio' name='exercise' onChange={handleChange}/>           
+                <dl key={exercises._id} >
+                  <input type='radio' name='exercise' value={exercises._id} />           
                   {exercises.name}
                   <dd>{exercises.description}</dd>
                 </dl>
