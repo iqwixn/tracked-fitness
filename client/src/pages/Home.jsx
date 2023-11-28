@@ -88,14 +88,14 @@ const Home = () => {
           <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
         <Row>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <Space direction="horizontal" align="center">
               <Card
                 title="Your Last Workout"
                 style={{
                   background: "linear-gradient(#ceeded, #24bdff)",
                   border: "solid lightblue",
-                  margin: "0 0 0 10px",
+                  margin: "25px",
                 }}
               >
         <div className="lastWorkout">
@@ -119,14 +119,14 @@ const Home = () => {
               </Card>
             </Space>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <Card
               title="Your Next Workout"
               bordered
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 20px",
+                margin: "25px",
               }}
             >
               <div className="nextWorkout">
@@ -137,13 +137,13 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <Card
               title="Your Workout History"
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 10px",
+                margin: "25px",
               }}
             >
               <div className="workoutHistory">
@@ -163,13 +163,13 @@ const Home = () => {
               </div>
             </Card>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <Card
               title="Available Workouts"
               style={{
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 10px",
+                margin: "25px",
               }}
             >
               <div className="availableWorkouts">
