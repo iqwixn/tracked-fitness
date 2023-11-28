@@ -34,7 +34,6 @@ function Nav() {
       <h1>
         <Link to="/">
           <span role="img" aria-label="lifting">
-            🏋️
           </span>
           Tracked Fitness
         </Link>
