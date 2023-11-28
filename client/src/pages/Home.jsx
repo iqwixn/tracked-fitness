@@ -90,46 +90,18 @@ const Home = () => {
         </div>
         <Row>
           <Col xs={24} sm={12}>
-            <Space direction="horizontal" align="center">
-              <Card
-                title="Your Last Workout"
-                style={{
-                  background: "linear-gradient(#ceeded, #24bdff)",
-                  border: "solid lightblue",
-                  margin: "25px",
-                }}
-              >
-        <div className="lastWorkout">
-          {mostRecentWorkoutPlan && (
-            <>
-              <p>{mostRecentWorkoutPlan.name}</p>
-              <ul>
-                {mostRecentWorkoutPlan.workouts.map((workoutSet) => (
-                  <li key={workoutSet._id}>
-                    <p>{workoutSet.name}</p>
-                    <p>{`Reps: ${workoutSet.reps}`}</p>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </div>
-        <Row>
-          <Col span={12}>
-            <Space direction="horizontal" align="center">
               <Card
                 title="Your Last Workout"
                 style={{
                 
                   background: "linear-gradient(#ceeded, #24bdff)",
                   border: "solid lightblue",
-                  margin: "0 0 0 10px",
+                  margin: "25px",
                 }}
               >
                 <DatePicker value={controlledDate} onChange={onChange} />
                 <Button type="primary">Last Workout</Button>
               </Card>
-            </Space>
           </Col>
           <Col xs={24} sm={12}>
             <Card
