@@ -16,7 +16,6 @@ function Add_Workout(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(formState);
     const mutationResponse = await addWorkout({
       variables: {
         name: formState.name,

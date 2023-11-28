@@ -28,7 +28,7 @@ const Home = () => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
 
-    console.log(userData?.user?.workoutPlans);
+    //console.log(userData?.user?.workoutPlans);
   }, [userData]);
 
   useEffect(() => {
@@ -139,6 +139,7 @@ const Home = () => {
                 <Button type="primary">Create Workout</Button>
                 <Link to="/newexercise">New Exercise!</Link>
                 <Link to="/newworkout">New Workout!</Link>
+                <Link to ="/newworkoutplan">New Workout Plan!</Link>
               </div>
             </Card>
           </Col>
