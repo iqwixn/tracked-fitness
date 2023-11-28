@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
@@ -26,7 +27,7 @@ const Home = () => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
 
-    console.log(userData?.user?.workoutPlans);
+    //console.log(userData?.user?.workoutPlans);
   }, [userData]);
 
   useEffect(() => {
@@ -113,9 +114,20 @@ const Home = () => {
             </>
           )}
         </div>
-        
-       
-
+        <Row>
+          <Col span={12}>
+            <Space direction="horizontal" align="center">
+              <Card
+                title="Your Last Workout"
+                style={{
+                
+                  background: "linear-gradient(#ceeded, #24bdff)",
+                  border: "solid lightblue",
+                  margin: "0 0 0 10px",
+                }}
+              >
+                <DatePicker value={controlledDate} onChange={onChange} />
+                <Button type="primary">Last Workout</Button>
               </Card>
             </Space>
           </Col>
@@ -132,6 +144,9 @@ const Home = () => {
               <div className="nextWorkout">
                 
                 <Button type="primary">Create Workout</Button>
+                <Link to="/newexercise">New Exercise!</Link>
+                <Link to="/newworkout">New Workout!</Link>
+                <Link to ="/newworkoutplan">New Workout Plan!</Link>
               </div>
             </Card>
           </Col>

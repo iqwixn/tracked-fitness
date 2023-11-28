@@ -78,7 +78,11 @@ const resolvers = {
 
     // Mutation for creating a new workout set
     addWorkoutSet: async (parent, args) => {
-      return WorkoutSet.create(args);
+      return WorkoutSet.create({
+        name: args.name,
+        workout: args.workout,
+        reps: args.reps,
+      });
     },
 
     // Mutation for updating a workout set

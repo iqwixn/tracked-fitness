@@ -6,6 +6,9 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Add_Exercise from './pages/NewExercise.jsx';
+import Add_Workout from './pages/NewWorkoutSet.jsx';
+import Add_Workout_Plan from './pages/NewWorkoutPlan.jsx';
 
 
 
@@ -16,7 +19,7 @@ const router = createBrowserRouter([
     error: <Home />,
     children: [
       {
-        index: true, 
+        index: true,
         element: <Home />
       }, {
         path: '/login',
@@ -24,7 +27,16 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, 
+      },{
+        path: '/newexercise',
+        element: <Add_Exercise />
+      }, {
+        path: '/newworkout',
+        element: <Add_Workout/>
+      },{
+        path: '/newworkoutplan',
+        element: <Add_Workout_Plan/>
+      },
     ]
   }
 ]);
