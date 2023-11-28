@@ -20,7 +20,7 @@ const Example = () => {
   });
 
   return (
-    <div className='background'>
+    <div>
       {isDesktopOrLaptop && (
         <h1>Desktop view</h1>,
         {/* Your desktop content */}
