@@ -6,7 +6,6 @@ import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
@@ -89,9 +88,18 @@ const Home = () => {
           <p id="Quote">{dailyQuote?.text}</p>
           <p id="Author">{dailyQuote?.author && `- ${dailyQuote.author}`}</p>
         </div>
+        <Row>
+          <Col xs={24} sm={12}>
+            <Space direction="horizontal" align="center">
+              <Card
+                title="Your Last Workout"
+                style={{
+                  background: "linear-gradient(#ceeded, #24bdff)",
+                  border: "solid lightblue",
+                  margin: "25px",
+                }}
+              >
         <div className="lastWorkout">
-
-          <h1>Your Last Workout</h1>
           {mostRecentWorkoutPlan && (
             <>
               <p>{mostRecentWorkoutPlan.name}</p>
@@ -123,19 +131,18 @@ const Home = () => {
               </Card>
             </Space>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <Card
               title="Your Next Workout"
               bordered
               style={{
-
                 background: "linear-gradient(#ceeded, #24bdff)",
                 border: "solid lightblue",
-                margin: "0 0 0 20px",
+                margin: "25px",
               }}
             >
               <div className="nextWorkout">
-                <h1>Your Next Workout</h1>
+                
                 <Button type="primary">Create Workout</Button>
                 <Link to="/newexercise">New Exercise!</Link>
                 <Link to="/newworkout">New Workout!</Link>
@@ -145,54 +152,50 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-      
-        <Col span={12}>
-          <Card
-          title="Your Workout History"
-            style={{
-             
-              background: "linear-gradient(#ceeded, #24bdff)",
-              border: "solid lightblue",
-              margin: "0 0 0 10px",
-            }}
-          >
-            <div className="workoutHistory">
-              {userWorkoutPlans.map((workoutPlan) => (
-                <div key={workoutPlan._id}>
-                  <h2>{workoutPlan.name}</h2>
-                  <ul>
-                    {workoutPlan.workouts.map((workoutSet) => (
-                      <li key={workoutSet._id}>
-                        <p>{workoutSet.name}</p>
-                        <p>{`Reps: ${workoutSet.reps}`}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </Col>
-        <Col span={12}>
-        <Card
-          title="Available Workouts"
-          style={{
-            
-            background: "linear-gradient(#ceeded, #24bdff)",
-            border: "solid lightblue",
-            margin: "0 0 0 10px",
-          }}
-        >
-          <div className="availableWorkouts">
-            
-            <ul>
-              {availableWorkouts.map((workout) => (
-                <li key={workout._id}>{workout.name}</li>
-              ))}
-            </ul>
-          </div>
-        </Card>
-        </Col>
+          <Col xs={24} sm={12}>
+            <Card
+              title="Your Workout History"
+              style={{
+                background: "linear-gradient(#ceeded, #24bdff)",
+                border: "solid lightblue",
+                margin: "25px",
+              }}
+            >
+              <div className="workoutHistory">
+                {userWorkoutPlans.map((workoutPlan) => (
+                  <div key={workoutPlan._id}>
+                    <h2>{workoutPlan.name}</h2>
+                    <ul>
+                      {workoutPlan.workouts.map((workoutSet) => (
+                        <li key={workoutSet._id}>
+                          <p>{workoutSet.name}</p>
+                          <p>{`Reps: ${workoutSet.reps}`}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12}>
+            <Card
+              title="Available Workouts"
+              style={{
+                background: "linear-gradient(#ceeded, #24bdff)",
+                border: "solid lightblue",
+                margin: "25px",
+              }}
+            >
+              <div className="availableWorkouts">
+                <ul>
+                  {availableWorkouts.map((workout) => (
+                    <li key={workout._id}>{workout.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </Card>
+          </Col>
         </Row>
       </div>
     );
