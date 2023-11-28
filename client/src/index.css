@@ -214,7 +214,7 @@ input:focus {
 
 .welcomeMessage{
   padding: 20px;
-  background-color: var(--secondary);
+  background-color: #45322e;
   border-radius: 10px;
   width: 50%;
   margin-left: 25%;
