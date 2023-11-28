@@ -1,6 +1,6 @@
 :root {
   --primary: #5889c4;
-  --secondary: #F3A847;
+  --secondary: #f2b76a;
   --tertiary: #B12704;
   --light: #fafafa;
   --dark: #272f32;
@@ -205,21 +205,28 @@ input:focus {
 }
 
 
-.homeParent {                                         /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-  width: 85%;
+.homeParent {                                         
+  /* width: 50%; */
   max-width: 1920px;
   display: block;
 }
 
 .welcomeMessage{
   padding: 20px;
-  margin-left: 40%;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center; 
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .lastWorkout{
   margin-left: 10%;
   margin-right: 10%;
   display: inline-block;
+  
 }
 
 .nextWorkout{
