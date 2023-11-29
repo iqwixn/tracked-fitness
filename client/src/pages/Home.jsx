@@ -27,14 +27,14 @@ const Home = () => {
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkouts(data?.workouts || []);
-    console.log("useEffect data: "+ data)
+    //console.log("useEffect data: "+ data)
   }, [data]);
 
   useEffect(() => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
 
-    console.log("useeffect user Data "+userData);
+    console.log("use effect userData "+userData?.user.workoutPlans[0]);
   }, [userData]);
 
   useEffect(() => {
@@ -94,7 +94,7 @@ const Home = () => {
     )
   }
 
-  console.log(`post load data & userData: ${data}, ${userData}`);
+  //console.log(`post load data & userData: ${data}, ${userData}`);
 
   if (Auth.loggedIn()) {
     return (

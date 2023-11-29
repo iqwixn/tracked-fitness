@@ -98,11 +98,11 @@ const resolvers = {
 
     // Mutation for creating a new workout plan
     addWorkoutPlan: async (parent, args) => {
-      return WorkoutPlan.create(args).populate({
-        path: 'workouts',
-        populate: {
-          path: 'workout'
-        }
+      return WorkoutPlan.create({
+        name: args.name,
+        workouts: args.workouts,
+        createdAt: args.createdAt
+
       });
     },
 

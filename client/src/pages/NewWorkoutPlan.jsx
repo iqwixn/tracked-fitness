@@ -20,7 +20,8 @@ function Add_Workout_Plan(props) {
     const mutationResponse = await addWorkoutPlan({
       variables: {
         name: formState.name,
-        workouts: formState.workouts,        
+        workouts: formState.workouts,
+        createdAt: formState.createdAt       
       },
     });
     const token = mutationResponse.data.addWorkoutPlan.token;
@@ -30,7 +31,7 @@ function Add_Workout_Plan(props) {
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkoutSets(data?.workoutSets || []);
-    console.log("use Efect data: "+data)
+    //console.log("use Efect data: "+data?.workoutSets[0].reps)
   }, [data]);
 
   const handleChange = (event) => {
@@ -71,17 +72,18 @@ function Add_Workout_Plan(props) {
             onChange={handleChange}
           />
         </div>
+
         <div className="flex-row space-between my-2">
         <label htmlFor="workout">Workout Sets:</label>
-          {/* <ul>
-              {data.workoutSets.map(workoutSet => 
+          <ul>
+              {availableWorkoutSets.map(workoutSet => 
                 <dl key={workoutSet._id} >
                   <input type='radio' name='workouts' value={workoutSet._id} onChange={handleChange} />           
                   {workoutSet.name}
-                  <dd>{workoutSet.workout}</dd>
+                  <dd>{workoutSet.reps}</dd>
                 </dl>
               )}
-          </ul> */}
+          </ul>
         </div> 
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
