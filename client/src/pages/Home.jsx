@@ -22,6 +22,7 @@ const Home = () => {
   const onChange = (date) => {
     setControlledDate(date);
   };
+  console.log(`${data}, ${userData}`);
 
   useEffect(() => {
     // Fetch workouts when the component is loaded

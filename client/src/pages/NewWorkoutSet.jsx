@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS } from "../utils/queries";
 import { Card } from 'antd';
 import Auth from '../utils/auth';
-import styles from '../App.css'
+
 
 
 
@@ -42,7 +42,7 @@ function Add_Workout(props) {
       ...formState,
       [name]: value,
     });
-    console.log(`${availableWorkouts}`)
+    
   };
 
 

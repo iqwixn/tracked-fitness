@@ -14,7 +14,6 @@ function Add_Workout_Plan(props) {
 
   const [formState, setFormState] = useState({ name: 'Name', workouts: 'abc123', createdAt:'4:20pm' });
   const [addWorkoutPlan] = useMutation(ADD_WORKOUT_PLAN);
-  console.log(`${data}`)
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
