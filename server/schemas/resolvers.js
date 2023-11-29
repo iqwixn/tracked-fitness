@@ -6,6 +6,7 @@ const resolvers = {
   Query: {
 
     user: async (parent, args, context) => {
+      console.log(" ads d "+context.user);
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'workoutPlans',
@@ -16,7 +17,7 @@ const resolvers = {
             }
           }
         });
-
+        console.log("in user resolver, USER: "+user)
         return user;
       }
 
@@ -97,11 +98,11 @@ const resolvers = {
 
     // Mutation for creating a new workout plan
     addWorkoutPlan: async (parent, args) => {
-      return WorkoutPlan.create(args).populate({
-        path: 'workouts',
-        populate: {
-          path: 'workout'
-        }
+      return WorkoutPlan.create({
+        name: args.name,
+        workouts: args.workouts,
+        createdAt: args.createdAt
+
       });
     },
 

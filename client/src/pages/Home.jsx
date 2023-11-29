@@ -22,17 +22,19 @@ const Home = () => {
   const onChange = (date) => {
     setControlledDate(date);
   };
+  
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkouts(data?.workouts || []);
+    //console.log("useEffect data: "+ data)
   }, [data]);
 
   useEffect(() => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
 
-    //console.log(userData?.user?.workoutPlans);
+    console.log("use effect userData "+userData?.user.workoutPlans[0]);
   }, [userData]);
 
   useEffect(() => {
@@ -80,9 +82,19 @@ const Home = () => {
     }
   };
 
+
+
   useEffect(() => {
     fetchDailyQuote();
   }, [Auth.loggedIn()]);
+
+  if(loading || userLoading){
+    return(
+    <div>loading</div>
+    )
+  }
+
+  //console.log(`post load data & userData: ${data}, ${userData}`);
 
   if (Auth.loggedIn()) {
     return (
