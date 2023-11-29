@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT_PLAN } from '../utils/mutations';
 import { useQuery } from "@apollo/client";
-import { QUERY_WORKOUT_SET } from "../utils/queries";
+import { QUERY_WORKOUT_SETS } from "../utils/queries";
 import { Card } from 'antd';
 import Auth from '../utils/auth';
 
 
 function Add_Workout_Plan(props) {
-  const { loading, data } = useQuery(QUERY_WORKOUT_SET);
+  const { loading, data } = useQuery(QUERY_WORKOUT_SETS);
   const [availableWorkoutSets, setAvailableWorkoutSets] = useState([]);
 
   const [formState, setFormState] = useState({ name: 'Name', workouts: 'abc123', createdAt:'4:20pm' });
   const [addWorkoutPlan] = useMutation(ADD_WORKOUT_PLAN);
-  
+  console.log(`${data}`)
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -24,9 +24,8 @@ function Add_Workout_Plan(props) {
         workouts: formState.workouts,        
       },
     });
-    const token = mutationResponse.data.addWorkoutSet.token;
+    const token = mutationResponse.data.addWorkoutPlan.token;
     Auth.login(token);
-
   };
   
   useEffect(() => {
@@ -40,6 +39,7 @@ function Add_Workout_Plan(props) {
       ...formState,
       [name]: value,
     });
+    
   };
 
 

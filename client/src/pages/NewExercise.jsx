@@ -19,8 +19,8 @@ function Add_Exercise(props) {
         description: formState.description,
       },
     });
-    const token = mutationResponse.data.addWorkout.token;
-    Auth.login(token);
+    // const token = mutationResponse.data.addWorkout.token;
+    // Auth.login(token);
   };
 
   const handleChange = (event) => {

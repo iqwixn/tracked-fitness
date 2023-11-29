@@ -5,6 +5,7 @@ import { ADD_WORKOUT_SET } from '../utils/mutations';
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS } from "../utils/queries";
 import { Card } from 'antd';
+import Auth from '../utils/auth';
 import styles from '../App.css'
 
 
@@ -26,8 +27,8 @@ function Add_Workout(props) {
         reps: formState.reps,        
       },
     });
-    
-
+    const token = mutationResponse.data.addWorkoutSet.token;
+    Auth.login(token);
   };
   
   useEffect(() => {
@@ -41,6 +42,7 @@ function Add_Workout(props) {
       ...formState,
       [name]: value,
     });
+    console.log(`${availableWorkouts}`)
   };
 
 
@@ -77,7 +79,7 @@ function Add_Workout(props) {
             id="reps"
             onChange={handleChange}
           />
-        </div>
+        </div> 
         <div className="block">
         <label htmlFor="workout">Exercises:</label>
           <ul>
