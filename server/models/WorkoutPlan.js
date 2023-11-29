@@ -11,7 +11,6 @@ const workoutPlanSchema = new Schema({
   workouts: [{
     type: Schema.Types.ObjectId,
     ref: 'WorkoutSet',
-    required: true
   }],
   createdAt: {
     type: String,

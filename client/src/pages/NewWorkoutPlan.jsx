@@ -30,6 +30,7 @@ function Add_Workout_Plan(props) {
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkoutSets(data?.workoutSets || []);
+    console.log("use Efect data: "+data)
   }, [data]);
 
   const handleChange = (event) => {
@@ -41,6 +42,11 @@ function Add_Workout_Plan(props) {
     
   };
 
+  if(loading){
+    return(
+    <div>loading</div>
+    )
+  }
 
   return (
     <div className="container my-1">
@@ -67,15 +73,15 @@ function Add_Workout_Plan(props) {
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="workout">Workout Sets:</label>
-          <ul>
-              {availableWorkoutSets.map(workoutSet => 
+          {/* <ul>
+              {data.workoutSets.map(workoutSet => 
                 <dl key={workoutSet._id} >
                   <input type='radio' name='workouts' value={workoutSet._id} onChange={handleChange} />           
                   {workoutSet.name}
                   <dd>{workoutSet.workout}</dd>
                 </dl>
               )}
-          </ul>
+          </ul> */}
         </div> 
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
