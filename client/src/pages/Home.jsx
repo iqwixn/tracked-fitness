@@ -5,6 +5,11 @@ import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
 import { Link } from "react-router-dom";
+import Datepickerform from "../components/Datepickerform";
+
+
+
+
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
@@ -99,8 +104,8 @@ const Home = () => {
                   margin: "25px",
                 }}
               >
-                <DatePicker value={controlledDate} onChange={onChange} />
-                <Button type="primary">Last Workout</Button>
+                <Datepickerform />
+                
               </Card>
           </Col>
           <Col xs={24} sm={12}>
@@ -114,11 +119,10 @@ const Home = () => {
               }}
             >
               <div className="nextWorkout">
-                
-                <Button type="primary">Create Workout</Button>
-                <Link to="/newexercise">New Exercise!</Link>
-                <Link to="/newworkout">New Workout!</Link>
-                <Link to ="/newworkoutplan">New Workout Plan!</Link>
+
+                <Button type="primary"><Link to="/newexercise">New Exercise!</Link></Button>
+                <Button type="primary"><Link to="/newworkout">New Workout!</Link></Button>
+                <Button type="primary"><Link to ="/newworkoutplan">New Workout Plan!</Link></Button>
               </div>
             </Card>
           </Col>
