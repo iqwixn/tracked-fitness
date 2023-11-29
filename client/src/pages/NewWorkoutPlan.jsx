@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT_PLAN } from '../utils/mutations';
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUT_SET } from "../utils/queries";
+import { Card } from 'antd';
+import Auth from '../utils/auth';
 
 
 function Add_Workout_Plan(props) {
@@ -22,7 +24,8 @@ function Add_Workout_Plan(props) {
         workouts: formState.workouts,        
       },
     });
-    
+    const token = mutationResponse.data.addWorkoutSet.token;
+    Auth.login(token);
 
   };
   
@@ -43,7 +46,14 @@ function Add_Workout_Plan(props) {
   return (
     <div className="container my-1">
       <Link to="/">← Go to Home</Link>
-
+      <Card title="Your Next Workout"
+    bordered
+    style={{
+      background: "linear-gradient(#ceeded, #24bdff)",
+      border: "solid lightblue",
+      margin: "25px",
+    }}
+  >
       <h2>Add Workout</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -72,6 +82,7 @@ function Add_Workout_Plan(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      </Card>
     </div>
   );
 }

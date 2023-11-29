@@ -4,6 +4,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT_SET } from '../utils/mutations';
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS } from "../utils/queries";
+import { Card } from 'antd';
+import styles from '../App.css'
+
 
 
 function Add_Workout(props) {
@@ -44,7 +47,15 @@ function Add_Workout(props) {
   return (
     <div className="container my-1">
       <Link to="/">← Go to Home</Link>
-
+      <Card title="Add Workout"
+    bordered
+    style={{
+      background: "linear-gradient(#ceeded, #24bdff)",
+      border: "solid lightblue",
+      
+      textAlign:"center"
+    }}
+  >
       <h2>Add Workout</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -67,7 +78,7 @@ function Add_Workout(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="block">
         <label htmlFor="workout">Exercises:</label>
           <ul>
               {availableWorkouts.map(exercises => 
@@ -83,6 +94,7 @@ function Add_Workout(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      </Card>
     </div>
   );
 }

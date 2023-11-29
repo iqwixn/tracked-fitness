@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_WORKOUT } from '../utils/mutations';
+import { Card } from 'antd';
 
 function Add_Exercise(props) {
   const [formState, setFormState] = useState({ name: '', description: '' });
@@ -31,9 +32,17 @@ function Add_Exercise(props) {
   };
 
   return (
+    
     <div className="container my-1">
       <Link to="/">← Go to Home</Link>
-
+      <Card title="Your Next Workout"
+    bordered
+    style={{
+      background: "linear-gradient(#ceeded, #24bdff)",
+      border: "solid lightblue",
+      margin: "25px",
+    }}
+  >
       <h2>Add Exercise</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -60,7 +69,9 @@ function Add_Exercise(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      </Card>
     </div>
+    
   );
 }
 
