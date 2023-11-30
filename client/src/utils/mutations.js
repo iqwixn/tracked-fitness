@@ -103,7 +103,7 @@ export const DELETE_WORKOUT_SET = gql`
 `;
 
 export const ADD_WORKOUT_PLAN = gql`
-  mutation addWorkoutPlan($name: String!, $workouts: [ID]!, $createdAt: String) {
+  mutation addWorkoutPlan($name: String!, $workouts: [ID]! ) {
     addWorkoutPlan(name: $name, workouts: $workouts) {
       _id
       name

@@ -60,7 +60,7 @@ const typeDefs = `
     updateWorkoutSet(_id: ID!, name: String, workout: ID, reps: String): WorkoutSet
     deleteWorkoutSet(_id: ID!): WorkoutSet
 
-    addWorkoutPlan(name: String!, workouts: [ID]!, createdAt: String): WorkoutPlan
+    addWorkoutPlan(name: String!, workouts: [ID]! ): WorkoutPlan
     updateWorkoutPlan(_id: ID!, name: String, workouts: [ID]): WorkoutPlan
     deleteWorkoutPlan(_id: ID!): WorkoutPlan
 

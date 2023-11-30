@@ -101,7 +101,6 @@ const resolvers = {
       return WorkoutPlan.create({
         name: args.name,
         workouts: args.workouts,
-        createdAt: args.createdAt
 
       });
     },

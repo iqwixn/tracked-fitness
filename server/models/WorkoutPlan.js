@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const workoutPlanSchema = new Schema({
   name: {
@@ -13,7 +13,8 @@ const workoutPlanSchema = new Schema({
     ref: 'WorkoutSet',
   }],
   createdAt: {
-    type: String,
+    type: Date,
+    default: Date.now,
   }
 });
 
