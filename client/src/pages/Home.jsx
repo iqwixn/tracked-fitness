@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_WORKOUTS, QUERY_USER, } from "../utils/queries";
 import axios from "axios";
-import { Button, Card, Space, DatePicker, Col, Row } from "antd";
+import { Button, Card,  Col, Row } from "antd";
 import { Link } from "react-router-dom";
 import Datepickerform from "../components/Datepickerform";
 
@@ -17,12 +17,7 @@ const Home = () => {
 
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
-  const [mostRecentWorkoutPlan, setMostRecentWorkoutPlan] = useState(null);
-  const [controlledDate, setControlledDate] = useState(null);
-  const onChange = (date) => {
-    setControlledDate(date);
-  };
-  
+
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
