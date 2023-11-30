@@ -1,29 +1,29 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query getUser {
-    user {
+query User {
+  user {
+    _id
+    email
+    firstName
+    lastName
+    workoutPlans {
       _id
-      firstName
-      lastName
-      email
-      workoutPlans {
+      createdAt
+      name
+      workouts {
         _id
         name
-        createdAt
-        workouts {
+        reps
+        workout {
           _id
+          description
           name
-          workout {
-            _id
-            name
-            description
-          }
-          reps
         }
       }
     }
   }
+}
 `;
 
 export const QUERY_WORKOUTS = gql`
@@ -47,16 +47,18 @@ export const QUERY_WORKOUT = gql`
 `;
 
 export const QUERY_WORKOUT_SETS = gql`
-  query getWorkoutSets {
-    workoutSets {
+query WorkoutSets {
+  workoutSets {
+    _id
+    name
+    reps
+    workout {
       _id
+      description
       name
-      workout {
-        _id
-      }
-      reps
     }
   }
+}
 `;
 
 export const QUERY_WORKOUT_SET = gql`
@@ -73,23 +75,23 @@ export const QUERY_WORKOUT_SET = gql`
 `;
 
 export const QUERY_WORKOUT_PLANS = gql`
-  query getWorkoutPlans {
-    workoutPlans {
+query WorkoutPlans {
+  workoutPlans {
+    _id
+    createdAt
+    name
+    workouts {
       _id
       name
-      createdAt
-      workouts {
+      reps
+      workout {
         _id
+        description
         name
-        workout {
-          _id
-          name
-          description
-        }
-        reps
       }
     }
   }
+}
 `;
 
 export const QUERY_WORKOUT_PLAN = gql`

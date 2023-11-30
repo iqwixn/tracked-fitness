@@ -1,7 +1,7 @@
 import Auth from "../utils/auth";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_WORKOUTS, QUERY_USER } from "../utils/queries";
+import { QUERY_WORKOUTS, QUERY_USER, } from "../utils/queries";
 import axios from "axios";
 import { Button, Card,  Col, Row } from "antd";
 import { Link } from "react-router-dom";
@@ -17,19 +17,19 @@ const Home = () => {
 
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
-  const [mostRecentWorkoutPlan, setMostRecentWorkoutPlan] = useState(null);
- 
+
 
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkouts(data?.workouts || []);
+    //console.log("useEffect data: "+ data)
   }, [data]);
 
   useEffect(() => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.user?.workoutPlans || []);
 
-    //console.log(userData?.user?.workoutPlans);
+    console.log("use effect userData "+userData?.user.workoutPlans[0]);
   }, [userData]);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const Home = () => {
           },
           headers: {
             "X-RapidAPI-Key":
-              "74a73f418emsh8c325d7f91bb73bp128dcajsn3884fc5f12c2",
+              "2778a8bb70mshdc89ff7dadfe79ap15ae15jsna4aa1dcf4d98",
             "X-RapidAPI-Host":
               "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
           },
@@ -77,9 +77,19 @@ const Home = () => {
     }
   };
 
+
+
   useEffect(() => {
     fetchDailyQuote();
   }, [Auth.loggedIn()]);
+
+  if(loading || userLoading){
+    return(
+    <div>loading</div>
+    )
+  }
+
+  //console.log(`post load data & userData: ${data}, ${userData}`);
 
   if (Auth.loggedIn()) {
     return (
