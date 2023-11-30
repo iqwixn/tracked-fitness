@@ -31,7 +31,7 @@ function Add_Workout_Plan(props) {
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkoutSets(data?.workoutSets || []);
-    //console.log("use Efect data: "+data?.workoutSets[0].reps)
+
   }, [data]);
 
   const handleChange = (event) => {
