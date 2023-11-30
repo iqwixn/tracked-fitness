@@ -58,7 +58,7 @@ const Home = () => {
           },
           headers: {
             "X-RapidAPI-Key":
-              "2778a8bb70mshdc89ff7dadfe79ap15ae15jsna4aa1dcf4d98",
+              "a9cd33756bmsh68ccbc568024cbbp19d049jsnad1f7371dd4a",
             "X-RapidAPI-Host":
               "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
           },
