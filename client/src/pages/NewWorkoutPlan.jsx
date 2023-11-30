@@ -31,7 +31,7 @@ function Add_Workout_Plan(props) {
   useEffect(() => {
     // Fetch workouts when the component is loaded
     setAvailableWorkoutSets(data?.workoutSets || []);
-    //console.log("use Efect data: "+data?.workoutSets[0].reps)
+
   }, [data]);
 
   const handleChange = (event) => {
@@ -78,7 +78,7 @@ function Add_Workout_Plan(props) {
           <ul>
               {availableWorkoutSets.map(workoutSet => 
                 <dl key={workoutSet._id} >
-                  <input type='radio' name='workouts' value={workoutSet._id} onChange={handleChange} />           
+                  <input type='checkbox' name='workouts' value={workoutSet._id} onChange={handleChange} />           
                   {workoutSet.name}
                   <dd>{workoutSet.reps}</dd>
                 </dl>

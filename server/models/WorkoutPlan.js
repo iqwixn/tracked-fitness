@@ -14,7 +14,6 @@ const workoutPlanSchema = new Schema({
   }],
   createdAt: {
     type: String,
-    required: true
   }
 });
 
