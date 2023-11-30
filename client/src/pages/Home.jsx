@@ -111,8 +111,8 @@ const Home = () => {
                 title="Your Last Workout"
                 style={{
                 
-                  background: "linear-gradient(#ceeded, #24bdff)",
-                  border: "solid lightblue",
+                  background: "linear-gradient(#735d4d, #45322e)",
+                border: "solid #45322e",
                   margin: "25px",
                 }}
               >
@@ -125,16 +125,16 @@ const Home = () => {
               title="Your Next Workout"
               bordered
               style={{
-                background: "linear-gradient(#ceeded, #24bdff)",
-                border: "solid lightblue",
+                background: "linear-gradient(#735d4d, #45322e)",
+                border: "solid #45322e",
                 margin: "25px",
               }}
             >
               <div className="nextWorkout">
 
-                <Button type="primary"><Link to="/newexercise">New Exercise!</Link></Button>
-                <Button type="primary"><Link to="/newworkout">New Workout!</Link></Button>
-                <Button type="primary"><Link to ="/newworkoutplan">New Workout Plan!</Link></Button>
+                <Button type="default"><Link to="/newexercise">New Exercise!</Link></Button>
+                <Button type="default"><Link to="/newworkout">New Workout!</Link></Button>
+                <Button type="default"><Link to ="/newworkoutplan">New Workout Plan!</Link></Button>
               </div>
             </Card>
           </Col>
@@ -144,12 +144,12 @@ const Home = () => {
             <Card
               title="Your Workout History"
               style={{
-                background: "linear-gradient(#ceeded, #24bdff)",
-                border: "solid lightblue",
+                background: "linear-gradient(#735d4d, #45322e)",
+                border: "solid #45322e",
                 margin: "25px",
               }}
             >
-              <div className="workoutHistory">
+              <div className="workoutHistory ">
                 {userWorkoutPlans.map((workoutPlan) => (
                   <div key={workoutPlan._id}>
                     <h2>{workoutPlan.name}</h2>
@@ -170,8 +170,8 @@ const Home = () => {
             <Card
               title="Available Workouts"
               style={{
-                background: "linear-gradient(#ceeded, #24bdff)",
-                border: "solid lightblue",
+                background: "linear-gradient(#735d4d, #45322e)",
+                border: "solid #45322e",
                 margin: "25px",
               }}
             >
