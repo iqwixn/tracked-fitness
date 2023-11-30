@@ -45,7 +45,7 @@ const DatePickerForm = () => {
       })}
     >
       <div>
-        <span>{JSON.stringify(watch("startDate"))}</span>
+       
         <br />
         <DatePickerField
           placeholder="Select Date"
@@ -55,7 +55,7 @@ const DatePickerForm = () => {
         <br />
       </div>
       <br />
-      <Button type="primary">View previous workout</Button>
+      <Button type="default">View previous workout</Button>
     </form>
     </div>
   );
