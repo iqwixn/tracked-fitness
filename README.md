@@ -29,6 +29,7 @@ With Heroku and a MongoDB database handling all the data, Tracked Fitness can be
 ## Installation
 
 No installation necessary! All you need to do is go to the deployed page! 
+https://tracked-fitness-49c50811533c.herokuapp.com/
 
 ## Usage
 
