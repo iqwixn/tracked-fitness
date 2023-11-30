@@ -1,7 +1,7 @@
 import Auth from "../utils/auth";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_WORKOUTS, QUERY_USER, } from "../utils/queries";
+import { QUERY_WORKOUTS, QUERY_USER, QUERY_WORKOUT_PLANS} from "../utils/queries";
 import axios from "axios";
 import { Button, Card, Space, DatePicker, Col, Row } from "antd";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ import Datepickerform from "../components/Datepickerform";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
-  const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
+  const { loading: userLoading, data: userData } = useQuery(QUERY_WORKOUT_PLANS);
 
   const [availableWorkouts, setAvailableWorkouts] = useState([]);
   const [userWorkoutPlans, setUserWorkoutPlans] = useState([]);
@@ -32,23 +32,23 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch workout plans for the current user when the component is loaded
-    setUserWorkoutPlans(userData?.user?.workoutPlans || []);
+    setUserWorkoutPlans(userData?.workoutPlans || []);
 
-    console.log("use effect userData "+userData?.user.workoutPlans[0]);
+    console.log("use effect userData "+userData?.workoutPlans[0].name);
   }, [userData]);
 
-  useEffect(() => {
-    // Find the most recent workout plan
-    if (userWorkoutPlans.length > 0) {
-      const sortedWorkoutPlans = [...userWorkoutPlans].sort((a, b) => {
-        const dateA = new Date(a.createdAt);
-        const dateB = new Date(b.createdAt);
-        return dateB - dateA;
-      });
+  // useEffect(() => {
+  //   // Find the most recent workout plan
+  //   if (userWorkoutPlans.length > 0) {
+  //     const sortedWorkoutPlans = [...userWorkoutPlans].sort((a, b) => {
+  //       const dateA = new Date(a.createdAt);
+  //       const dateB = new Date(b.createdAt);
+  //       return dateB - dateA;
+  //     });
 
-      setMostRecentWorkoutPlan(sortedWorkoutPlans[0]);
-    }
-  }, [userWorkoutPlans]);
+  //     setMostRecentWorkoutPlan(sortedWorkoutPlans[0]);
+  //   }
+  // }, [userWorkoutPlans]);
 
   const [dailyQuote, setDailyQuote] = useState(null);
 
