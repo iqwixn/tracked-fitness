@@ -50,8 +50,8 @@ function Add_Workout(props) {
       <Card title="Add Workout"
     bordered
     style={{
-      background: "linear-gradient(#ceeded, #24bdff)",
-      border: "solid lightblue",
+      background: "linear-gradient(#735d4d, #45322e)",
+      border: "solid #45322e",
       
       textAlign:"center"
     }}
