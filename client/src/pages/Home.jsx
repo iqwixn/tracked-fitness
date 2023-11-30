@@ -29,7 +29,7 @@ const Home = () => {
     // Fetch workout plans for the current user when the component is loaded
     setUserWorkoutPlans(userData?.workoutPlans || []);
 
-    console.log("use effect userData "+userData?.workoutPlans[0].name);
+    
   }, [userData]);
 
   // useEffect(() => {
